@@ -1,28 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import { startAddCategory } from '../actions/categories';
 
-export class ExpenseForm extends React.Component {
+export class BudgetForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: props.expense ? props.expense.category : '',
-      description: props.expense ? props.expense.description : '',
-      note: props.expense ? props.expense.note : '',
-      amount: props.expense ? (props.expense.amount / 100).toString() : '',
-      createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
-      calendarFocused: false
+      category: props.budget ? props.budget.category : '',
+      amount: props.budget ? (props.budget.amount / 100).toString() : '',
+      startDate: props.budget ? moment(props.budget.startDate) : moment(),
+      endDate: props.budget ? moment(props.budget.endDate) : moment().add(7, 'days'),
+      note: props.budget ? props.budget.note : '',
+      calendarFocused: null
     };
-  }
+  };
   onCategoryChange = (e) => {
     const category = e.target.value;
     this.setState(() => ({ category }));
-  };
-  onDescriptionChange = (e) => {
-    const description = e.target.value;
-    this.setState(() => ({ description }));
   };
   onNoteChange = (e) => {
     const note = e.target.value;
@@ -34,19 +30,21 @@ export class ExpenseForm extends React.Component {
       this.setState(() => ({ amount }));
     }
   };
-  onDateChange = (createdAt) => {
-    if (createdAt) {
-      this.setState(() => ({ createdAt }));
-    }
+  onDatesChange = ({ startDate, endDate }) => {
+    this.setState(() => ({ startDate, endDate }));
   };
-  onFocusChange = ({ focused }) => {
-    this.setState(() => ({ calendarFocused: focused }));
+  onFocusChange = (calendarFocused) => {
+    this.setState(() => ({ calendarFocused }));
   };
   onSubmit = async (e) => {
     e.preventDefault();
-    const lowercaseCategories = this.props.categories.map(({ name }) => name.toLowerCase());
-    const lowercaseCategory = this.state.category.toLowerCase();
-    const categoryIndex = lowercaseCategories.indexOf(lowercaseCategory);
+    const cleansedCategories = this.props.categories.map(({ name }) => name
+      .replace(/[^A-Z0-9]+/ig, '')
+      .toLowerCase());
+    const cleansedCategory = this.state.category
+      .replace(/[^A-Z0-9]+/ig, '')
+      .toLowerCase();
+    const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
 
     if (categoryIndex > -1) {
       await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
@@ -54,16 +52,15 @@ export class ExpenseForm extends React.Component {
       this.props.startAddCategory({ name: this.state.category });
     }
 
-
-    if (!this.state.description || !this.state.amount) {
-      this.setState(() => ({ error: 'Please provide both description and amount' }));
+    if (!this.state.amount || (!this.state.startDate && !this.state.endDate) ) {
+      this.setState(() => ({ error: 'Please provide the start date, end date and the amount' }))
     } else {
-      this.setState(() => ({ error: '' }));
+      this.setState(() => ({ error: '' }))
       this.props.onSubmit({
         category: this.state.category,
-        description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
-        createdAt: this.state.createdAt.valueOf(),
+        startDate: this.state.startDate.valueOf(),
+        endDate: this.state.endDate.valueOf(),
         note: this.state.note
       });
     }
@@ -83,38 +80,32 @@ export class ExpenseForm extends React.Component {
         <input
           className="text-input"
           type="text"
-          placeholder="Description"
-          value={this.state.description}
-          onChange={(this.onDescriptionChange)}
-        />
-        <input
-          className="text-input"
-          type="text"
           placeholder="Amount"
           value={this.state.amount}
           onChange={this.onAmountChange}
         />
-        <SingleDatePicker
-          date={this.state.createdAt}
-          onDateChange={this.onDateChange}
-          focused={this.state.calendarFocused}
+        <DateRangePicker
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          onDatesChange={this.onDatesChange}
+          focusedInput={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}
+          showClearDates={true}
           numberOfMonths={1}
-          isOutsideRange={() => false}
         />
         <textarea
           className="textarea"
-          placeholder="Add a note for your expense (optional)"
+          placeholder="Add a note for your budget (optional)"
           value={this.state.note}
           onChange={(this.onNoteChange)}
         >
         </textarea>
         <div>
-          <button className="button">Save Expense</button>
+          <button className="button">Save Budget</button>
         </div>
       </form>
     );
-  };
+  }
 };
 
 const mapStateToProps = (state) => {
@@ -129,4 +120,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetForm);

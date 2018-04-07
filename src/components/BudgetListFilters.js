@@ -1,34 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates';
-import { setExpensesTextFilter, sortExpensesByDate, sortExpensesByAmount, setExpensesStartDate, setExpensesEndDate, setExpensesCategoryFilter } from '../actions/expensesFilters';
+import { setBudgetsTextFilter, sortBudgetsByDate, sortBudgetsByAmount, setBudgetsStartDate, setBudgetsEndDate, setBudgetsCategoryFilter } from '../actions/budgetsFilters';
 
-export class ExpenseListFilters extends React.Component {
+export class BudgetListFilters extends React.Component {
   state = {
     calendarFocused: null
   };
   onDatesChange = ({ startDate, endDate }) => {
-    this.props.setExpensesStartDate(startDate);
-    this.props.setExpensesEndDate(endDate);
+    this.props.setBudgetsStartDate(startDate);
+    this.props.setBudgetsEndDate(endDate);
   };
   onFocusChange = (calendarFocused) => {
     this.setState(() => ({ calendarFocused }));
   };
-  onTextChange = (e) => {
-    this.props.setExpensesTextFilter(e.target.value);
-  };
   onSortChange = (e) => {
     if (e.target.value === 'date') {
-      this.props.sortExpensesByDate();
+      this.props.sortBudgetsByDate();
     } else if (e.target.value === 'amount') {
-      this.props.sortExpensesByAmount();
+      this.props.sortBudgetsByAmount();
     }
   };
   onCategoryChange = (e) => {
-    this.props.setExpensesCategoryFilter(e.target.value);
+    this.props.setBudgetsCategoryFilter(e.target.value);
   };
   onFocus = (e) => {
-    this.props.setExpensesCategoryFilter('');
+    this.props.setBudgetsCategoryFilter('');
   }
   render() {
     return (
@@ -41,7 +38,7 @@ export class ExpenseListFilters extends React.Component {
               : (
                 <select
                   className="select"
-                  value={this.props.expensesFilters.category}
+                  value={this.props.budgetsFilters.category}
                   onChange={this.onCategoryChange}
                   onFocus={this.onFocus}
                 >
@@ -66,18 +63,9 @@ export class ExpenseListFilters extends React.Component {
             }
           </div>
           <div className="input-group__item">
-            <input
-              className="text-input"
-              placeholder="Search expenses"
-              type="text"
-              value={this.props.expensesFilters.text}
-              onChange={this.onTextChange}
-            />
-          </div>
-          <div className="input-group__item">
             <select
               className="select"
-              value={this.props.expensesFilters.text}
+              value={this.props.budgetsFilters.text}
               onChange={this.onSortChange}
             >
               <option
@@ -94,8 +82,8 @@ export class ExpenseListFilters extends React.Component {
           </div>
           <div className="input-group__item">
             <DateRangePicker
-              startDate={this.props.expensesFilters.startDate}
-              endDate={this.props.expensesFilters.endDate}
+              startDate={this.props.budgetsFilters.startDate}
+              endDate={this.props.budgetsFilters.endDate}
               onDatesChange={this.onDatesChange}
               focusedInput={this.state.calendarFocused}
               onFocusChange={this.onFocusChange}
@@ -111,17 +99,17 @@ export class ExpenseListFilters extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-  expensesFilters: state.expensesFilters,
+  budgetsFilters: state.budgetsFilters,
   categories: state.categories
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setExpensesTextFilter: (text) => dispatch(setExpensesTextFilter(text)),
-  sortExpensesByDate: () => dispatch(sortExpensesByDate()),
-  sortExpensesByAmount: () => dispatch(sortExpensesByAmount()),
-  setExpensesStartDate: (startDate) => dispatch(setExpensesStartDate(startDate)),
-  setExpensesEndDate: (endDate) => dispatch(setExpensesEndDate(endDate)),
-  setExpensesCategoryFilter: (category) => dispatch(setExpensesCategoryFilter(category))
+  setBudgetsTextFilter: (text) => dispatch(setBudgetsTextFilter(text)),
+  sortBudgetsByDate: () => dispatch(sortBudgetsByDate()),
+  sortBudgetsByAmount: () => dispatch(sortBudgetsByAmount()),
+  setBudgetsStartDate: (startDate) => dispatch(setBudgetsStartDate(startDate)),
+  setBudgetsEndDate: (endDate) => dispatch(setBudgetsEndDate(endDate)),
+  setBudgetsCategoryFilter: (category) => dispatch(setBudgetsCategoryFilter(category))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilters);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetListFilters);

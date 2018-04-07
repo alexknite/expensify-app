@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import database from '../firebase/firebase';
 
 export const addExpense = (expense) => ({
@@ -13,9 +12,10 @@ export const startAddExpense = (expenseData = {}) => {
       description = '',
       note = '',
       amount = 0,
-      createdAt = 0
+      createdAt = 0,
+      category = ''
     } = expenseData;
-    const expense  = { description, note, amount, createdAt };
+    const expense  = { description, note, amount, createdAt, category };
 
     return database.ref(`users/${uid}/expenses`).push(expense).then((ref) => {
       dispatch(addExpense({

@@ -4,8 +4,9 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startSetExpenses } from './actions/expenses';
+import { startSetCategories } from './actions/categories';
+import { startSetBudgets } from './actions/budgets';
 import { login, logout } from './actions/auth';
-import getVisibleExpenses from './selectors/expenses';
 import './styles/styles.scss';
 import 'normalize.css/normalize.css';
 import 'react-dates/lib/css/_datepicker.css';
@@ -31,7 +32,10 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
-    store.dispatch(startSetExpenses()).then(() => {
+    store.dispatch(startSetCategories())
+    .then(store.dispatch(startSetExpenses()))
+    .then(store.dispatch(startSetBudgets()))
+    .then(() => {
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');
