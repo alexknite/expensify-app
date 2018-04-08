@@ -41,7 +41,7 @@ test('should set text filter', () => {
 test('should set startDate filter', () => {
   const startDate = moment();
   const action = {
-    type: 'SET_START_DATE',
+    type: 'SET_EXPENSES_START_DATE',
     startDate
   };
   const state = filterReducer(undefined, action);
@@ -51,7 +51,7 @@ test('should set startDate filter', () => {
 test('should set endDate filter', () => {
   const endDate = moment();
   const action = {
-    type: 'SET_END_DATE',
+    type: 'SET_EXPENSES_END_DATE',
     endDate
   };
   const state = filterReducer(undefined, action);

@@ -47,7 +47,7 @@ export const startEditCategory = (id, updates) => {
   return (dispatch, getState) => {
     const uid = getState().auth.uid;
 
-    database.ref(`users/${uid}/categories/${id}`).update(updates).then(() => {
+    return database.ref(`users/${uid}/categories/${id}`).update(updates).then(() => {
       dispatch(editCategory(id, updates));
     });
   };

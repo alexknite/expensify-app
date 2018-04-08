@@ -18,10 +18,11 @@ exports[`should render EditExpensePage 1`] = `
   <div
     className="content-container"
   >
-    <ExpenseForm
+    <Connect(ExpenseForm)
       expense={
         Object {
           "amount": 4500,
+          "category": "bill",
           "createdAt": 345600000,
           "description": "Credit Card",
           "id": "3",

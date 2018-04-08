@@ -30,12 +30,12 @@ export default (state = filtersReducerDefState, action) => {
         ...state,
         category: action.category
       }
-    case 'SET_START_DATE':
+    case 'SET_EXPENSES_START_DATE':
       return {
         ...state,
         startDate: action.startDate
       };
-    case 'SET_END_DATE':
+    case 'SET_EXPENSES_END_DATE':
       return {
         ...state,
         endDate: action.endDate

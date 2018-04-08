@@ -20,8 +20,8 @@ const createMockStore = configureMockStore([thunk]);
 
 beforeEach((done) => {
   const budgetsData = {};
-  budgets.forEach(({ id, amount, startDate, endDate, note }) => {
-    budgetsData[id] = { amount, startDate, endDate, note };
+  budgets.forEach(({ id, amount, startDate, endDate, note, category }) => {
+    budgetsData[id] = { amount, startDate, endDate, note, category };
   });
   database.ref(`users/${uid}/budgets`).set(budgetsData).then(() => done());
 });
@@ -84,7 +84,8 @@ test('should setup add budget action object with provided values', () => {
     amount: 20,
     startDate: 0,
     endDate: 1000,
-    note: 'This is a note'
+    note: 'This is a note',
+    category: 'Food'
   };
   const action = addBudget(budgets[2]);
   expect(action).toEqual({
@@ -99,7 +100,8 @@ test('should add budget to database and store', (done) => {
     amount: 40,
     startDate: 1600,
     endDate: 8550,
-    note: 'Another note'
+    note: 'Another note',
+    category: 'Transportation'
   };
 
   store.dispatch(startAddBudget(budgetData)).then(() => {
@@ -126,7 +128,8 @@ test('should add budget with defaults to database and store', (done) => {
     amount: 0,
     startDate: 0,
     endDate: 0,
-    note: ''
+    note: '',
+    category: ''
   };
 
   store.dispatch(startAddBudget({})).then(() => {

@@ -8,7 +8,7 @@ import { setExpensesTextFilter,
 test('should generate set start date action object', () => {
   const action = setExpensesStartDate(moment(0));
   expect(action).toEqual({
-    type: 'SET_START_DATE',
+    type: 'SET_EXPENSES_START_DATE',
     startDate: moment(0)
   });
 });
@@ -16,7 +16,7 @@ test('should generate set start date action object', () => {
 test('should generate set end date action object.', () => {
   const action = setExpensesEndDate(moment(0));
   expect(action).toEqual({
-    type: 'SET_END_DATE',
+    type: 'SET_EXPENSES_END_DATE',
     endDate: moment(0)
   });
 });

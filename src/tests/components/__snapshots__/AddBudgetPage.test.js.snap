@@ -18,7 +18,7 @@ exports[`should render AddBudgetPage correctly 1`] = `
   <div
     className="content-container"
   >
-    <BudgetForm
+    <Connect(BudgetForm)
       onSubmit={[Function]}
     />
   </div>

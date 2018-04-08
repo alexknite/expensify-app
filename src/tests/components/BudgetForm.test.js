@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import moment from 'moment';
-import BudgetForm from '../../components/BudgetForm';
+import { BudgetForm } from '../../components/BudgetForm';
 import budgets from '../fixtures/budgets';
 
 test('should render BudgetForm correctly', () => {
@@ -20,6 +20,7 @@ test('should render error for invalid for submission', () => {
   wrapper.find('form').simulate('submit', {
     preventDefault: () => {}
   });
+  return console.log(wrapper.state());
   expect(wrapper.state('error').length).toBeGreaterThan(0);
   expect(wrapper).toMatchSnapshot();
 });

@@ -53,9 +53,9 @@ export class BudgetForm extends React.Component {
     }
 
     if (!this.state.amount || (!this.state.startDate && !this.state.endDate) ) {
-      this.setState(() => ({ error: 'Please provide the start date, end date and the amount' }))
+      this.setState(() => ({ error: 'Please provide the start date, end date and the amount' }));
     } else {
-      this.setState(() => ({ error: '' }))
+      this.setState(() => ({ error: '' }));
       this.props.onSubmit({
         category: this.state.category,
         amount: parseFloat(this.state.amount, 10) * 100,

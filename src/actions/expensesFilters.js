@@ -17,11 +17,11 @@ export const setExpensesCategoryFilter = (category = '') => ({
 });
 
 export const setExpensesStartDate = (startDate) => ({
-  type: 'SET_START_DATE',
+  type: 'SET_EXPENSES_START_DATE',
   startDate
 });
 
 export const setExpensesEndDate = (endDate) => ({
-  type: 'SET_END_DATE',
+  type: 'SET_EXPENSES_END_DATE',
   endDate
 });
