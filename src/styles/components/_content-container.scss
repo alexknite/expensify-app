@@ -3,3 +3,11 @@
   padding: 0 $m-size;
   max-width: 80rem;
 }
+
+.content-container__filters {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100rem;
+}

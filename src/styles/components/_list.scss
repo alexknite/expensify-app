@@ -21,7 +21,7 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding: $s-size;
+  padding: $m-size;
   text-decoration: none;
   transition: background .3s ease;
   &:hover {
@@ -49,24 +49,39 @@
 .list-item__title {
   margin: 0;
   word-break: break-all;
+  text-align: center;
+
+  @media (min-width: $desktop-breakpoint) {
+    text-align: justify;
+  }
 }
 
 .list-item__sub-title {
   color: $grey;
   font-size: $font-size-s;
+  text-align: center;
+
+  @media (min-width: $desktop-breakpoint) {
+    text-align: justify;
+  }
 }
 
 .list-item__data {
   margin: $s-size 0 0 0;
+  text-align: center;
   @media (min-width: $desktop-breakpoint) {
     margin: 0;
     padding-left: $s-size;
+    text-align: justify;
   }
 }
 
 .list-item__actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-direction: column;
+  }
 }

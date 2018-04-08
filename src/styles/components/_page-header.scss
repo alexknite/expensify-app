@@ -5,13 +5,25 @@
 }
 
 .page-header__actions {
+  align-items: center;
+  display: flex;
   margin-top: $m-size;
+  justify-content: space-around;
+
+  @media (min-width: $desktop-breakpoint) {
+    justify-content: flex-start;
+  }
 }
 
 .page-header__title {
   font-weight: 300;
   margin: 0;
+  text-align: center;
   span {
     font-weight: bold;
+  }
+
+  @media (min-width: $desktop-breakpoint) {
+    text-align: justify;
   }
 }

@@ -21,7 +21,7 @@ const BudgetListItem = ({ id, amount, startDate, endDate, note, selectBudget, ca
       <div>
         <h2 className="list-item__sub-title">{category}</h2>
         <h3 className="list-item__title">{numeral(amount / 100).format(',0.00')}</h3>
-        <span className="list-item__sub-title">{moment(startDate).format('MMMM Do, YYYY')} - {moment(endDate).format('MMMM Do, YYYY')}</span>
+        <p className="list-item__sub-title">{moment(startDate).format('MMMM Do, YYYY')} - {moment(endDate).format('MMMM Do, YYYY')}</p>
         <h3 className="list-item__sub-title">{note}</h3>
       </div>
       <div className="list-item__actions">
