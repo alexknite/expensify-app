@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export default (budgets, { text, sortBy, startDate, endDate, category }) => {
+export default (budgets, { sortBy, startDate, endDate, category }) => {
   return budgets.filter((budget) => {
     const startDateMoment = moment(budget.startDate);
     const endDateMoment = moment(budget.endDate);

@@ -19,12 +19,27 @@ exports[`should render Header correctly 1`] = `
           Expensify
         </h1>
       </Link>
-      <button
-        className="button button--link"
-        onClick={[Function]}
-      >
-        Logout
-      </button>
+      <div>
+        <button
+          className="button button--link"
+          onClick={[Function]}
+        >
+          Logout
+        </button>
+        <Link
+          replace={false}
+          to="/settings"
+        >
+          <button
+            className="button button--link"
+          >
+            <img
+              alt="Settings"
+              src="/images/settings.svg"
+            />
+          </button>
+        </Link>
+      </div>
     </div>
   </div>
 </header>

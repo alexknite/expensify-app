@@ -65,7 +65,7 @@ export class BudgetListFilters extends React.Component {
           <div className="input-group__item">
             <select
               className="select"
-              value={this.props.budgetsFilters.text}
+              value={this.props.budgetsFilters.sortBy}
               onChange={this.onSortChange}
             >
               <option

@@ -5,7 +5,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import { selectBudget } from '../actions/budget';
 
-const BudgetListItem = ({ id, amount, startDate, endDate, note, selectBudget, category }) => {
+export const BudgetListItem = ({ id, amount, startDate, endDate, note, selectBudget, category }) => {
   const onSelect = () => {
     selectBudget({
       id,

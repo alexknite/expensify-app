@@ -9,12 +9,19 @@ export const Header = ({ startLogout }) => (
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
         <h1>Expensify</h1>
-      </Link>
-      <button className="button button--link" onClick={startLogout}>Logout</button>
+        </Link>
+        <div>
+          <button className="button button--link" onClick={startLogout}>Logout</button>
+          <Link to="/settings">
+            <button className="button button--link">
+              <img src="/images/settings.svg" alt="Settings"/>
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   </header>
-);
+);;
 
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout())

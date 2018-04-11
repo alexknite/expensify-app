@@ -2,7 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import moment from 'moment';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
-import { filters, altFilters } from '../fixtures/filters';
+import { filters, altFilters } from '../fixtures/expensesFilters';
+import categories from '../fixtures/categories';
 
 let setExpensesTextFilter, sortExpensesByDate, sortExpensesByAmount, setExpensesStartDate, setExpensesEndDate, wrapper;
 
@@ -14,7 +15,8 @@ beforeEach(() => {
   setExpensesEndDate = jest.fn();
   wrapper = shallow(
     <ExpenseListFilters
-      filters={filters}
+      categories={categories}
+      expensesFilters={filters}
       setExpensesTextFilter={setExpensesTextFilter}
       sortExpensesByDate={sortExpensesByDate}
       sortExpensesByAmount={sortExpensesByAmount}
@@ -45,7 +47,7 @@ test('should handle text change', () => {
 
 test('should sort by amount', () => {
   const value = 'amount';
-  wrapper.find('select').simulate('change', {
+  wrapper.find('select').at(1).simulate('change', {
     target: { value }
   });
   expect(sortExpensesByAmount).toHaveBeenCalled();
@@ -53,7 +55,7 @@ test('should sort by amount', () => {
 
 test('should sort by date', () => {
   const value = 'date';
-  wrapper.find('select').simulate('change', {
+  wrapper.find('select').at(1).simulate('change', {
     target: { value }
   });
   expect(sortExpensesByDate).toHaveBeenCalled();

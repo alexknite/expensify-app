@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render BudgetsSummary with one budget 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <div>
+      <h1
+        className="page-header__title"
+      >
+        You have spent 
+        <span>
+          $0.50
+        </span>
+         out of 
+        <span>
+          $1.00
+        </span>
+         for 
+        <span>
+          Food
+        </span>
+      </h1>
+      <h1
+        className="page-header__title"
+      >
+        You may spend 
+        <span>
+          $0.50
+        </span>
+         more
+      </h1>
+    </div>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create/budget"
+      >
+        Add Budget
+      </Link>
+    </div>
+  </div>
+</div>
+`;

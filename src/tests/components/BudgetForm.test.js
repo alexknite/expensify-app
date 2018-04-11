@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import moment from 'moment';
 import { BudgetForm } from '../../components/BudgetForm';
 import budgets from '../fixtures/budgets';
+import categories from '../fixtures/categories';
 
 test('should render BudgetForm correctly', () => {
   const wrapper = shallow(<BudgetForm />);
@@ -20,7 +21,6 @@ test('should render error for invalid for submission', () => {
   wrapper.find('form').simulate('submit', {
     preventDefault: () => {}
   });
-  return console.log(wrapper.state());
   expect(wrapper.state('error').length).toBeGreaterThan(0);
   expect(wrapper).toMatchSnapshot();
 });
@@ -37,7 +37,7 @@ test('should set note on textarea change', () => {
 test('should set amount if valid input', () => {
   const value = '10.23';
   const wrapper = shallow(<BudgetForm />);
-  wrapper.find('input').at(0).simulate('change', {
+  wrapper.find('input').at(1).simulate('change', {
     target: { value }
   });
   expect(wrapper.state('amount')).toBe(value);
@@ -52,10 +52,10 @@ test('should not set amount if invalid input', () => {
   expect(wrapper.state('amount')).toBe('');
 });
 
-test('should call onSubmit for valid form submission', () => {
+test('should call onSubmit for valid form submission', async () => {
   const onSubmitSpy = jest.fn();
-  const wrapper = shallow(<BudgetForm budget={budgets[0]} onSubmit={onSubmitSpy} />);
-  wrapper.find('form').simulate('submit', {
+  const wrapper = shallow(<BudgetForm categories={categories} budget={budgets[0]} onSubmit={onSubmitSpy} />);
+  await wrapper.find('form').simulate('submit', {
     preventDefault: () => {}
   });
   expect(wrapper.state('error')).toBe('');
@@ -63,7 +63,8 @@ test('should call onSubmit for valid form submission', () => {
     amount: budgets[0].amount,
     startDate: budgets[0].startDate,
     endDate: budgets[0].endDate,
-    note: budgets[0].note
+    note: budgets[0].note,
+    category: budgets[0].category
   });
 })
 

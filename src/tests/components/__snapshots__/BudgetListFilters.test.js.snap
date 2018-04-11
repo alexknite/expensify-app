@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render ExpenseListFilters correctly 1`] = `
+exports[`should render BudgetListFilters correctly 1`] = `
 <div
   className="content-container content-container__filters"
 >
@@ -45,21 +45,10 @@ exports[`should render ExpenseListFilters correctly 1`] = `
     <div
       className="input-group__item"
     >
-      <input
-        className="text-input"
-        onChange={[Function]}
-        placeholder="Search expenses"
-        type="text"
-        value=""
-      />
-    </div>
-    <div
-      className="input-group__item"
-    >
       <select
         className="select"
         onChange={[Function]}
-        value=""
+        value="date"
       >
         <option
           value="date"
@@ -164,7 +153,7 @@ exports[`should render ExpenseListFilters correctly 1`] = `
 </div>
 `;
 
-exports[`should render ExpenseListFilters with alt data correctly 1`] = `
+exports[`should render BudgetListFilters with alt data correctly 1`] = `
 <div
   className="content-container content-container__filters"
 >
@@ -209,21 +198,10 @@ exports[`should render ExpenseListFilters with alt data correctly 1`] = `
     <div
       className="input-group__item"
     >
-      <input
-        className="text-input"
-        onChange={[Function]}
-        placeholder="Search expenses"
-        type="text"
-        value="bills"
-      />
-    </div>
-    <div
-      className="input-group__item"
-    >
       <select
         className="select"
         onChange={[Function]}
-        value="bills"
+        value="amount"
       >
         <option
           value="date"

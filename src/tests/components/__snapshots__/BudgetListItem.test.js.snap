@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render BudgetListItem correctly 1`] = `
+<div
+  className="list-item"
+>
+  <div>
+    <h2
+      className="list-item__sub-title"
+    >
+      Food
+    </h2>
+    <h3
+      className="list-item__title"
+    >
+      1.00
+    </h3>
+    <p
+      className="list-item__sub-title"
+    >
+      December 31st, 1969
+       - 
+      January 7th, 1970
+    </p>
+    <h3
+      className="list-item__sub-title"
+    />
+  </div>
+  <div
+    className="list-item__actions"
+  >
+    <button
+      className="button button--link"
+      onClick={[Function]}
+    >
+      <img
+        alt="Select"
+        src="/images/eye.svg"
+      />
+    </button>
+    <Link
+      replace={false}
+      to="edit/budget/1"
+    >
+      <button
+        className="button button--link"
+      >
+        <img
+          alt="Edit"
+          src="/images/edit.svg"
+        />
+      </button>
+    </Link>
+  </div>
+</div>
+`;

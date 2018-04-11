@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EditBudgetPage 1`] = `
+<div>
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header-title"
+      >
+        Edit Budget
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <Connect(BudgetForm)
+      budget={
+        Object {
+          "amount": 25,
+          "category": "Transportation",
+          "endDate": -777600000,
+          "id": "3",
+          "note": "",
+          "startDate": -1296000000,
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Budget
+    </button>
+  </div>
+</div>
+`;

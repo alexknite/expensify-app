@@ -44,14 +44,22 @@ export class ExpenseForm extends React.Component {
   };
   onSubmit = async (e) => {
     e.preventDefault();
-    const lowercaseCategories = this.props.categories.map(({ name }) => name.toLowerCase());
-    const lowercaseCategory = this.state.category.toLowerCase();
-    const categoryIndex = lowercaseCategories.indexOf(lowercaseCategory);
 
-    if (categoryIndex > -1) {
-      await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
-    } else {
-      this.props.startAddCategory({ name: this.state.category });
+    if (this.state.category !== '') {
+      const cleansedCategories = this.props.categories.map(({ name }) => name
+        .replace(/[^A-Z0-9]+/ig, '')
+        .toLowerCase());
+      const cleansedCategory = this.state.category
+        .replace(/[^A-Z0-9]+/ig, '')
+        .toLowerCase();
+      const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
+
+      if (categoryIndex > -1) {
+        await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
+        this.setState(() => ({ test: 'hehe' }));
+      } else {
+        this.props.startAddCategory({ name: this.state.category });
+      }
     }
 
 

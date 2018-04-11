@@ -24,7 +24,7 @@ test('should render EditExpensePage', () => {
 });
 
 test('should handle startEditExpense', () => {
-  wrapper.find('ExpenseForm').prop('onSubmit')(expenses[2]);
+  wrapper.find('Connect(ExpenseForm)').prop('onSubmit')(expenses[2]);
   expect(history.push).toHaveBeenLastCalledWith('/');
   expect(startEditExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2]);
 });

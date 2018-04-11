@@ -15,6 +15,12 @@ export class BudgetForm extends React.Component {
       note: props.budget ? props.budget.note : '',
       calendarFocused: null
     };
+    this.onCategoryChange = this.onCategoryChange.bind(this);
+    this.onNoteChange = this.onNoteChange.bind(this);
+    this.onAmountChange = this.onAmountChange.bind(this);
+    this.onDatesChange = this.onDatesChange.bind(this);
+    this.onFocusChange = this.onFocusChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   };
   onCategoryChange = (e) => {
     const category = e.target.value;
@@ -38,21 +44,25 @@ export class BudgetForm extends React.Component {
   };
   onSubmit = async (e) => {
     e.preventDefault();
-    const cleansedCategories = this.props.categories.map(({ name }) => name
-      .replace(/[^A-Z0-9]+/ig, '')
-      .toLowerCase());
-    const cleansedCategory = this.state.category
-      .replace(/[^A-Z0-9]+/ig, '')
-      .toLowerCase();
-    const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
 
-    if (categoryIndex > -1) {
-      await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
-    } else {
-      this.props.startAddCategory({ name: this.state.category });
+    if (this.state.category !== '') {
+      const cleansedCategories = this.props.categories.map(({ name }) => name
+        .replace(/[^A-Z0-9]+/ig, '')
+        .toLowerCase());
+      const cleansedCategory = this.state.category
+        .replace(/[^A-Z0-9]+/ig, '')
+        .toLowerCase();
+      const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
+
+      if (categoryIndex > -1) {
+        await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
+        this.setState(() => ({ test: 'hehe' }));
+      } else {
+        this.props.startAddCategory({ name: this.state.category });
+      }
     }
 
-    if (!this.state.amount || (!this.state.startDate && !this.state.endDate) ) {
+    if (!this.state.amount || !this.state.startDate || !this.state.endDate) {
       this.setState(() => ({ error: 'Please provide the start date, end date and the amount' }));
     } else {
       this.setState(() => ({ error: '' }));

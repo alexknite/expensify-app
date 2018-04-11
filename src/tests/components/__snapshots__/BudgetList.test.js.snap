@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render BudgetList with budgets 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Budgets
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Budget
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <Connect(BudgetListItem)
+      amount={100}
+      category="Food"
+      endDate={604800000}
+      id="1"
+      key="1"
+      note=""
+      startDate={0}
+    />
+    <Connect(BudgetListItem)
+      amount={50}
+      category="food"
+      endDate={-86400000}
+      id="2"
+      key="2"
+      note=""
+      startDate={-691200000}
+    />
+    <Connect(BudgetListItem)
+      amount={25}
+      category="Transportation"
+      endDate={-777600000}
+      id="3"
+      key="3"
+      note=""
+      startDate={-1296000000}
+    />
+  </div>
+</div>
+`;
+
+exports[`should render BudgetList with empty message 1`] = `
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Budgets
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Budget
+    </div>
+  </div>
+  <div
+    className="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No budgets available
+      </span>
+    </div>
+  </div>
+</div>
+`;

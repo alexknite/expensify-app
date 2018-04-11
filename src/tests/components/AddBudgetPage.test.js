@@ -17,7 +17,7 @@ test('should render AddBudgetPage correctly', () => {
 });
 
 test('should handle onSubmit', () => {
-  wrapper.find('BudgetForm').prop('onSubmit')(budgets[1]);
+  wrapper.find('Connect(BudgetForm)').prop('onSubmit')(budgets[1]);
   expect(history.push).toHaveBeenLastCalledWith('/');
   expect(selectBudget).toHaveBeenLastCalledWith({});
   expect(startAddBudget).toHaveBeenLastCalledWith(budgets[1]);

@@ -37,7 +37,7 @@ export const BudgetsSummary = ({ moneySpent, moneyAlotted, moneyLeft, category }
 };
 
 const mapStateToProps = ({ budget, expenses }) => {
-  const moneySpent = selectBudget(expenses, budget.category, budget.amount);
+  const moneySpent = selectBudget(expenses, budget.category);
   const moneyAlotted = budget.amount;
   const moneyLeft = moneyAlotted - moneySpent;
 
