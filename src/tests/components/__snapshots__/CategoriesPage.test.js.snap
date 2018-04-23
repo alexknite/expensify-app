@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CategoriesPage correctly 1`] = `
+<div>
+  <CategoriesSummary />
+  <Connect(CategoriesList) />
+</div>
+`;

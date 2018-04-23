@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CategoriesForm correctly 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <div>
+    <button
+      className="button"
+    >
+      Save Category
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render CategoriesForm correctly with category data 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value="Transportation"
+  />
+  <div>
+    <button
+      className="button"
+    >
+      Save Category
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render error for invalid for submission 1`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <div>
+    <button
+      className="button"
+    >
+      Save Category
+    </button>
+  </div>
+</form>
+`;
+
+exports[`should render error for invalid for submission 2`] = `
+<form
+  className="form"
+  onSubmit={[Function]}
+>
+  <p
+    className="form__error"
+  >
+    Category names cannot be blank
+  </p>
+  <input
+    autoFocus={true}
+    className="text-input"
+    onChange={[Function]}
+    placeholder="Category"
+    type="text"
+    value=""
+  />
+  <div>
+    <button
+      className="button"
+    >
+      Save Category
+    </button>
+  </div>
+</form>
+`;

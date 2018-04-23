@@ -5,8 +5,9 @@ import CategoriesListItem from './CategoriesListItem';
 export const CategoriesList = (props) => (
   <div className="content-container">
     <div className="list-header">
-      <div className="show-for-mobile">Budget</div>
+      <div className="show-for-mobile">Category</div>
       <div className="show-for-desktop">Categories</div>
+      <div className="show-for-desktop">Amount</div>
     </div>
     <div className="list-body">
       {

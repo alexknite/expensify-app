@@ -19,6 +19,7 @@ export class CategoriesForm extends React.Component {
     if (this.state.name === '') {
       this.setState(() => ({ error: 'Category names cannot be blank' }));
     } else {
+      this.setState(() => ({ error: '' }));
       this.props.onSubmit({
         name: this.state.name
       });
@@ -36,7 +37,9 @@ export class CategoriesForm extends React.Component {
           value={this.state.name}
           onChange={(this.onTextChange)}
         />
-        <button className="button">Save</button>
+        <div>
+          <button className="button">Save Category</button>
+        </div>
       </form>
     );
   };

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CategoriesListItem correctly 1`] = `
+<Link
+  className="list-item"
+  replace={false}
+  to="/edit/category/1"
+>
+  <div>
+    <h3
+      className="list-item__title"
+    >
+      Food
+    </h3>
+  </div>
+  <h2
+    className="list-item__data"
+  />
+</Link>
+`;

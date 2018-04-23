@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CategoriesSummary correctly 1`] = `
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Categories
+    </h1>
+    <div
+      className="page-header__actions"
+    >
+      <Link
+        className="button button--action"
+        replace={false}
+        to="/create/category"
+      >
+        Add Category
+      </Link>
+    </div>
+  </div>
+</div>
+`;

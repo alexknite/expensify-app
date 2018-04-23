@@ -5,14 +5,41 @@ exports[`should render ExpenseForm correctly 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
+  <select
+    className="select"
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
     value=""
-  />
+  >
+    <option
+      disabled={true}
+      value={true}
+    >
+      -- Select a category --
+    </option>
+    <option
+      key="1"
+      value="1"
+    >
+      Food
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      Bill
+    </option>
+    <option
+      key="3"
+      value="3"
+    >
+      Transportation
+    </option>
+    <option
+      value=""
+    >
+      None
+    </option>
+  </select>
   <input
     className="text-input"
     onChange={[Function]}
@@ -124,14 +151,41 @@ exports[`should render ExpenseForm correctly with expense data 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
+  <select
+    className="select"
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
     value="bill"
-  />
+  >
+    <option
+      disabled={true}
+      value={true}
+    >
+      -- Select a category --
+    </option>
+    <option
+      key="1"
+      value="1"
+    >
+      Food
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      Bill
+    </option>
+    <option
+      key="3"
+      value="3"
+    >
+      Transportation
+    </option>
+    <option
+      value=""
+    >
+      None
+    </option>
+  </select>
   <input
     className="text-input"
     onChange={[Function]}
@@ -243,14 +297,41 @@ exports[`should render error for invalid for submission 1`] = `
   className="form"
   onSubmit={[Function]}
 >
-  <input
-    autoFocus={true}
-    className="text-input"
+  <select
+    className="select"
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
     value=""
-  />
+  >
+    <option
+      disabled={true}
+      value={true}
+    >
+      -- Select a category --
+    </option>
+    <option
+      key="1"
+      value="1"
+    >
+      Food
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      Bill
+    </option>
+    <option
+      key="3"
+      value="3"
+    >
+      Transportation
+    </option>
+    <option
+      value=""
+    >
+      None
+    </option>
+  </select>
   <input
     className="text-input"
     onChange={[Function]}
@@ -367,14 +448,41 @@ exports[`should render error for invalid for submission 2`] = `
   >
     Please provide both description and amount
   </p>
-  <input
-    autoFocus={true}
-    className="text-input"
+  <select
+    className="select"
     onChange={[Function]}
-    placeholder="Category"
-    type="text"
     value=""
-  />
+  >
+    <option
+      disabled={true}
+      value={true}
+    >
+      -- Select a category --
+    </option>
+    <option
+      key="1"
+      value="1"
+    >
+      Food
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      Bill
+    </option>
+    <option
+      key="3"
+      value="3"
+    >
+      Transportation
+    </option>
+    <option
+      value=""
+    >
+      None
+    </option>
+  </select>
   <input
     className="text-input"
     onChange={[Function]}

@@ -30,8 +30,8 @@ export class EditCategoryPage extends React.Component {
             category={this.props.category}
             onSubmit={this.onSubmit}
           />
+          <button className="button button--secondary" onClick={this.onRemove}>Remove Category</button>
         </div>
-        <button className="button button--secondary" onClick={this.onRemove}>Remove Category</button>
       </div>
     );
   };

@@ -6,17 +6,17 @@ import budgets from '../fixtures/budgets';
 import categories from '../fixtures/categories';
 
 test('should render BudgetForm correctly', () => {
-  const wrapper = shallow(<BudgetForm />);
+  const wrapper = shallow(<BudgetForm categories={categories} />);
   expect(wrapper).toMatchSnapshot();
 });
 
 test('should render BudgetForm correctly with budget data', () => {
-  const wrapper = shallow(<BudgetForm budget={budgets[2]} />);
+  const wrapper = shallow(<BudgetForm categories={categories} budget={budgets[2]} />);
   expect(wrapper).toMatchSnapshot();
 });
 
 test('should render error for invalid for submission', () => {
-  const wrapper = shallow(<BudgetForm />);
+  const wrapper = shallow(<BudgetForm categories={categories} />);
   expect(wrapper).toMatchSnapshot();
   wrapper.find('form').simulate('submit', {
     preventDefault: () => {}
@@ -27,7 +27,7 @@ test('should render error for invalid for submission', () => {
 
 test('should set note on textarea change', () => {
   const value = 'New note';
-  const wrapper = shallow(<BudgetForm />);
+  const wrapper = shallow(<BudgetForm categories={categories} />);
   wrapper.find('textarea').simulate('change', {
     target: { value }
   });
@@ -36,8 +36,8 @@ test('should set note on textarea change', () => {
 
 test('should set amount if valid input', () => {
   const value = '10.23';
-  const wrapper = shallow(<BudgetForm />);
-  wrapper.find('input').at(1).simulate('change', {
+  const wrapper = shallow(<BudgetForm categories={categories} />);
+  wrapper.find('input').at(0).simulate('change', {
     target: { value }
   });
   expect(wrapper.state('amount')).toBe(value);
@@ -45,7 +45,7 @@ test('should set amount if valid input', () => {
 
 test('should not set amount if invalid input', () => {
   const value = '174.222';
-  const wrapper = shallow(<BudgetForm />);
+  const wrapper = shallow(<BudgetForm categories={categories} />);
   wrapper.find('input').at(0).simulate('change', {
     target: { value }
   });
@@ -70,7 +70,7 @@ test('should call onSubmit for valid form submission', async () => {
 
 test('should handle date focus changes', () => {
   const calendarFocused = 'endDate';
-  const wrapper = shallow(<BudgetForm />);
+  const wrapper = shallow(<BudgetForm categories={categories} />);
   wrapper.find('DateRangePicker').prop('onFocusChange')(calendarFocused);
   expect(wrapper.state('calendarFocused')).toBe(calendarFocused);
 });

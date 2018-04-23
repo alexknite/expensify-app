@@ -63,7 +63,7 @@ exports[`should render ExpenseList with expenses 1`] = `
   <div
     className="list-body"
   >
-    <ExpenseListItem
+    <Connect(ExpenseListItem)
       amount={195}
       category="Food"
       createdAt={0}
@@ -72,7 +72,7 @@ exports[`should render ExpenseList with expenses 1`] = `
       key="1"
       note=""
     />
-    <ExpenseListItem
+    <Connect(ExpenseListItem)
       amount={1109500}
       category="Bill"
       createdAt={-345600000}
@@ -81,7 +81,7 @@ exports[`should render ExpenseList with expenses 1`] = `
       key="2"
       note=""
     />
-    <ExpenseListItem
+    <Connect(ExpenseListItem)
       amount={4500}
       category="bill"
       createdAt={345600000}

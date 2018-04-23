@@ -19,7 +19,9 @@ exports[`should render Header correctly 1`] = `
           Expensify
         </h1>
       </Link>
-      <div>
+      <div
+        className="header__actions"
+      >
         <button
           className="button button--link"
           onClick={[Function]}

@@ -13,7 +13,6 @@ exports[`should render BudgetListFilters correctly 1`] = `
       <select
         className="select"
         onChange={[Function]}
-        onFocus={[Function]}
         value=""
       >
         <option
@@ -24,21 +23,26 @@ exports[`should render BudgetListFilters correctly 1`] = `
         </option>
         <option
           key="1"
-          value="Food"
+          value="1"
         >
           Food
         </option>
         <option
           key="2"
-          value="Bill"
+          value="2"
         >
           Bill
         </option>
         <option
           key="3"
-          value="Transportation"
+          value="3"
         >
           Transportation
+        </option>
+        <option
+          value=""
+        >
+          None
         </option>
       </select>
     </div>
@@ -166,7 +170,6 @@ exports[`should render BudgetListFilters with alt data correctly 1`] = `
       <select
         className="select"
         onChange={[Function]}
-        onFocus={[Function]}
         value="bill"
       >
         <option
@@ -177,21 +180,26 @@ exports[`should render BudgetListFilters with alt data correctly 1`] = `
         </option>
         <option
           key="1"
-          value="Food"
+          value="1"
         >
           Food
         </option>
         <option
           key="2"
-          value="Bill"
+          value="2"
         >
           Bill
         </option>
         <option
           key="3"
-          value="Transportation"
+          value="3"
         >
           Transportation
+        </option>
+        <option
+          value=""
+        >
+          None
         </option>
       </select>
     </div>

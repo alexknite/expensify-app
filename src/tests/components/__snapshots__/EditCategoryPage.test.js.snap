@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render EditCategoryPage 1`] = `
+<div>
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <h1
+        className="page-header-title"
+      >
+        Category Settings
+      </h1>
+    </div>
+  </div>
+  <div
+    className="content-container"
+  >
+    <CategoriesForm
+      category={
+        Object {
+          "id": "3",
+          "name": "Transportation",
+        }
+      }
+      onSubmit={[Function]}
+    />
+    <button
+      className="button button--secondary"
+      onClick={[Function]}
+    >
+      Remove Category
+    </button>
+  </div>
+</div>
+`;

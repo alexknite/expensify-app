@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import numeral from 'numeral';
 
-const ExpenseListItem = ({ categoryName, description, id, amount, createdAt }) => (
+export const ExpenseListItem = ({ categoryName, description, id, amount, createdAt }) => (
   <Link className="list-item" to={`/edit/expense/${id}`}>
     <div>
       <h2 className="list-item__sub-title">{categoryName}</h2>
