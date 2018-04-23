@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates';
-import { startAddCategory } from '../actions/categories';
 
 export class ExpenseForm extends React.Component {
   constructor(props) {
@@ -15,6 +14,13 @@ export class ExpenseForm extends React.Component {
       createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
       calendarFocused: false
     };
+    this.onCategoryChange = this.onCategoryChange.bind(this);
+    this.onDescriptionChange = this.onDescriptionChange.bind(this);
+    this.onNoteChange = this.onNoteChange.bind(this);
+    this.onAmountChange = this.onAmountChange.bind(this);
+    this.onDateChange = this.onDateChange.bind(this);
+    this.onFocusChange = this.onFocusChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   onCategoryChange = (e) => {
     const category = e.target.value;
@@ -45,24 +51,6 @@ export class ExpenseForm extends React.Component {
   onSubmit = async (e) => {
     e.preventDefault();
 
-    if (this.state.category !== '') {
-      const cleansedCategories = this.props.categories.map(({ name }) => name
-        .replace(/[^A-Z0-9]+/ig, '')
-        .toLowerCase());
-      const cleansedCategory = this.state.category
-        .replace(/[^A-Z0-9]+/ig, '')
-        .toLowerCase();
-      const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
-
-      if (categoryIndex > -1) {
-        await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
-        this.setState(() => ({ test: 'hehe' }));
-      } else {
-        this.props.startAddCategory({ name: this.state.category });
-      }
-    }
-
-
     if (!this.state.description || !this.state.amount) {
       this.setState(() => ({ error: 'Please provide both description and amount' }));
     } else {
@@ -80,14 +68,35 @@ export class ExpenseForm extends React.Component {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         {this.state.error && <p className="form__error">{this.state.error}</p>}
-        <input
-          className="text-input"
-          type="text"
-          placeholder="Category"
-          autoFocus
-          value={this.state.category}
-          onChange={(this.onCategoryChange)}
-        />
+        {
+          this.props.categories.length === 0
+          ? <span></span>
+          : (
+            <select
+              className="select"
+              value={this.state.category}
+              onChange={this.onCategoryChange}
+            >
+              <option
+                disabled
+                value
+              >
+                -- Select a category --
+              </option>
+            {
+              this.props.categories.map(({ id, name }) => {
+                return <option
+                  key={id}
+                  value={id}
+                >
+                  {name}
+                </option>
+              })
+            }
+            <option value="">None</option>
+            </select>
+          )
+        }
         <input
           className="text-input"
           type="text"
@@ -125,16 +134,8 @@ export class ExpenseForm extends React.Component {
   };
 };
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.categories
-  };
-};
+const mapStateToProps = (state) => ({
+  categories: state.categories
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startAddCategory: ({ name }) => dispatch(startAddCategory({ name }))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);
+export default connect(mapStateToProps)(ExpenseForm);

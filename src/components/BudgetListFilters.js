@@ -24,9 +24,6 @@ export class BudgetListFilters extends React.Component {
   onCategoryChange = (e) => {
     this.props.setBudgetsCategoryFilter(e.target.value);
   };
-  onFocus = (e) => {
-    this.props.setBudgetsCategoryFilter('');
-  }
   render() {
     return (
       <div className="content-container content-container__filters">
@@ -40,7 +37,6 @@ export class BudgetListFilters extends React.Component {
                   className="select"
                   value={this.props.budgetsFilters.category}
                   onChange={this.onCategoryChange}
-                  onFocus={this.onFocus}
                 >
                   <option
                     disabled
@@ -52,12 +48,13 @@ export class BudgetListFilters extends React.Component {
                   this.props.categories.map(({ id, name }) => {
                     return <option
                       key={id}
-                      value={name}
+                      value={id}
                     >
                       {name}
                     </option>
                   })
                 }
+                <option value="">None</option>
                 </select>
               )
             }

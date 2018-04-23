@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
-import { startAddCategory } from '../actions/categories';
 
 export class BudgetForm extends React.Component {
   constructor(props) {
@@ -45,25 +44,8 @@ export class BudgetForm extends React.Component {
   onSubmit = async (e) => {
     e.preventDefault();
 
-    if (this.state.category !== '') {
-      const cleansedCategories = this.props.categories.map(({ name }) => name
-        .replace(/[^A-Z0-9]+/ig, '')
-        .toLowerCase());
-      const cleansedCategory = this.state.category
-        .replace(/[^A-Z0-9]+/ig, '')
-        .toLowerCase();
-      const categoryIndex = cleansedCategories.indexOf(cleansedCategory);
-
-      if (categoryIndex > -1) {
-        await this.setState(() => ({ category: this.props.categories[categoryIndex].name }));
-        this.setState(() => ({ test: 'hehe' }));
-      } else {
-        this.props.startAddCategory({ name: this.state.category });
-      }
-    }
-
-    if (!this.state.amount || !this.state.startDate || !this.state.endDate) {
-      this.setState(() => ({ error: 'Please provide the start date, end date and the amount' }));
+    if (!this.state.amount || !this.state.startDate || !this.state.endDate || this.state.category === '') {
+      this.setState(() => ({ error: 'Please provide all necessary information' }));
     } else {
       this.setState(() => ({ error: '' }));
       this.props.onSubmit({
@@ -79,14 +61,33 @@ export class BudgetForm extends React.Component {
     return (
       <form className="form" onSubmit={this.onSubmit}>
         {this.state.error && <p className="form__error">{this.state.error}</p>}
-        <input
-          className="text-input"
-          type="text"
-          placeholder="Category"
-          autoFocus
-          value={this.state.category}
-          onChange={(this.onCategoryChange)}
-        />
+        {
+          this.props.categories.length === 0
+          ? <span></span>
+          : (
+            <select
+              className="select"
+              value={this.state.category}
+              onChange={this.onCategoryChange}
+            >
+              <option
+                value=""
+              >
+                -- Select a category --
+              </option>
+            {
+              this.props.categories.map(({ id, name }) => {
+                return <option
+                  key={id}
+                  value={id}
+                >
+                  {name}
+                </option>
+              })
+            }
+            </select>
+          )
+        }
         <input
           className="text-input"
           type="text"
@@ -118,16 +119,8 @@ export class BudgetForm extends React.Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    categories: state.categories
-  };
-};
+const mapStateToProps = (state) => ({
+  categories: state.categories
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    startAddCategory: ({ name }) => dispatch(startAddCategory({ name }))
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetForm);
+export default connect(mapStateToProps)(BudgetForm);

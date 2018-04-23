@@ -30,7 +30,7 @@ export class AddBudgetPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => ({
   startAddBudget: (budget) => dispatch(startAddBudget(budget)),
-  selectBudget: (budget) => dispatch(startAddBudget(budget))
+  selectBudget: (budget) => dispatch(selectBudget(budget))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddBudgetPage);

@@ -27,9 +27,6 @@ export class ExpenseListFilters extends React.Component {
   onCategoryChange = (e) => {
     this.props.setExpensesCategoryFilter(e.target.value);
   };
-  onFocus = (e) => {
-    this.props.setExpensesCategoryFilter('');
-  }
   render() {
     return (
       <div className="content-container content-container__filters">
@@ -43,7 +40,6 @@ export class ExpenseListFilters extends React.Component {
                   className="select"
                   value={this.props.expensesFilters.category}
                   onChange={this.onCategoryChange}
-                  onFocus={this.onFocus}
                 >
                   <option
                     disabled
@@ -55,12 +51,13 @@ export class ExpenseListFilters extends React.Component {
                   this.props.categories.map(({ id, name }) => {
                     return <option
                       key={id}
-                      value={name}
+                      value={id}
                     >
                       {name}
                     </option>
                   })
                 }
+                <option value="">None</option>
                 </select>
               )
             }
@@ -77,7 +74,7 @@ export class ExpenseListFilters extends React.Component {
           <div className="input-group__item">
             <select
               className="select"
-              value={this.props.expensesFilters.text}
+              value={this.props.expensesFilters.sortBy}
               onChange={this.onSortChange}
             >
               <option

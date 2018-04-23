@@ -1,4 +1,4 @@
-export const selectBudget = (budget) => ({
+export const selectBudget = (id) => ({
   type: 'SELECT_BUDGET',
-  budget
+  id
 });
